@@ -16,6 +16,8 @@ tar -xvf SDL2-devel-2.0.16-mingw.tar.gz
 cd .\SDL2-2.0.16
 move x86_64-w64-mingw32 ..
 cd ..
+move winmake.bat ..
+move hellosdl.cpp ..
 move x86_64-w64-mingw32 ..
 cd ..
 
