@@ -1,12 +1,12 @@
 :: This is intended to be a template script for compiling SDL2 programs on windows
-:: For troubleshooting details of how to set up an SDL2 project on windows, using MinGW or GCC only,
-:: visit the following:
+:: For troubleshooting details of how to set up an SDL2 project on windows
+:: using MinGW or GCC only, visit the following:
 :: https://stackoverflow.com/a/64396980/14978745
 @echo off
 
 :: Commonly modified flags
-set outputFile= -o output.exe
-set srcFiles= test.cpp
+set outputFile= -o a.exe
+set srcFiles= hellosdl.cpp
 set compiler= gcc
 
 :: Link flags must be at the end of the command
