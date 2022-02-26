@@ -1,27 +1,30 @@
 :: This is a setup script intended to set up SDL2 ready for compilation
 :: Steps of what the program is supposed to do:
-:: - Create a temp file
-:: - Download the binaries of sdl2 contained in a tar file, to said temp file
-:: - Extract the tar file
-:: - Copy the folder prefixed with "x86_64" out of the temp folder
-:: - Rename it to "SDL2"
-:: - Force delete all the contents of the temp file
-:: - Copy SDL2/bin/SDL2.dll into the folder where batch file is running
 
 @echo off
 
+:: Download the binaries of sdl2 contained in a tar file
+:: and rename it to match its purpose
 git clone https://www.github.com/silkylogs/sdl2-make-script
-mv .\sdl2-make-script\ .\temp\
-cd .\temp\
+move .\sdl2-make-script .\temp
 
-tar -xvf SDL2-devel*.tar.gz
-cd .\SDL2-*\
-cp .\x86_64-w64*\ ..\..\
-cd ..\..\
+:: Extract the SDL2 binaries
+cd .\temp
+tar -xvf SDL2-devel-2.0.16-mingw.tar.gz
 
-mv .\x86_64-w64*\ .\SDL2\
+:: - Copy the folder conatining the binaries out of the temp folder
+cd .\SDL2-2.0.16
+move x86_64-w64-mingw32 ..
+cd ..
+move x86_64-w64-mingw32 ..
+cd ..
 
-rm -Recurse -Force .\temp\
+:: Rename it to "SDL2"
+move x86_64-w64-mingw32 .\SDL2
 
-cp .\SDL2\bin\SDL2.dll .\
+:: Force delete all the contents of the temp file
+del .\temp
+
+:: Copy SDL2/bin/SDL2.dll into the folder where batch file is running
+copy .\SDL2\bin\SDL2.dll .\
 
